@@ -9,4 +9,4 @@ for (let i = 0; i < (16*16); ++i){
     container.append(newDiv);
 }
 
-const box = document.querySelector('box');
+const box = document.querySelectorAll('box');
