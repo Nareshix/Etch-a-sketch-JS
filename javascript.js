@@ -2,14 +2,16 @@ const container = document.querySelector('#container');
 const button = document.querySelector('button');
 
 const createGrid = (sides=16) => {
+    
     container.style.cssText = `
     display: grid; 
     width: 960px; 
     height: 960px;
     border: solid rebeccapurple;
-    grid-template-columns: repeat(${sides}, ${960/sides}px);
-    grid-template-rows: repeat(${sides}, ${960/sides}px);
+    grid-template-columns: repeat(${sides}, 1fr);
+    grid-template-rows: repeat(${sides}, 1fr);
     `;
+    
     for (let i = 0; i < (sides*sides); ++i){
         const newDiv = document.createElement('div');
         newDiv.style.aspectRatio = '1/1';
