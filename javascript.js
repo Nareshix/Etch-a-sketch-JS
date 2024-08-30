@@ -21,7 +21,7 @@ const enableColouring = () => {
 }
 
 button.addEventListener('click', () => {
-    sides = Number(window.prompt());
+    sides = Number(window.prompt('No. of boxes per side to'));
     document.querySelectorAll('.box').forEach( box => box.remove());
     createGrid(sides);
     enableColouring()
