@@ -32,6 +32,7 @@ const enableColouring = () => {
 button.addEventListener('click', () => {
     sides = Number(window.prompt('No. of boxes per side to'));
 
+    // To prevent lag on user's computer
     if (sides > 100){
         alert('Pls enter a number <= 100');
     }
