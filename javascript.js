@@ -15,7 +15,7 @@ const createGrid = (sides=16) => {
         const newDiv = document.createElement('div');
         newDiv.style.aspectRatio = '1/1';
         newDiv.classList = 'box';
-        newDiv.style.border = '1px solid black'
+        newDiv.style.border = '1px solid black';
         container.append(newDiv);
     }    
 }
@@ -24,16 +24,23 @@ const enableColouring = () => {
     let boxes = document.querySelectorAll('.box');
     boxes.forEach(box => {
         box.addEventListener('mouseover', (event) =>{
-            event.target.style.backgroundColor = 'blue'
+            event.target.style.backgroundColor = 'blue';
         })
     });    
 }
 
 button.addEventListener('click', () => {
     sides = Number(window.prompt('No. of boxes per side to'));
-    document.querySelectorAll('.box').forEach( box => box.remove());
-    createGrid(sides);
-    enableColouring()
+
+    if (sides > 100){
+        alert('Pls enter a number <= 100');
+    }
+    else{
+        document.querySelectorAll('.box').forEach( box => box.remove());
+        createGrid(sides);
+        enableColouring();
+    }
+
 })
 
 //Default behaviour
