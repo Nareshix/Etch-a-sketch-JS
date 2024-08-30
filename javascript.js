@@ -1,5 +1,17 @@
 const container = document.querySelector('#container');
-const button = document.querySelector('button');
+const changeBox = document.querySelector('#input');
+
+
+// Got this snippet of code from StackOverflow: https://stackoverflow.com/questions/1484506/random-color-generator?page=1&tab=scoredesc#tab-top
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 
 const createGrid = (sides=16) => {
     
@@ -21,21 +33,20 @@ const createGrid = (sides=16) => {
     }    
 }
 
-const enableColouring = () => {
+const enableColouring = (option='grey') => {
     let boxes = document.querySelectorAll('.box');
+
+  // if its not a function, then it becomes a funciton "color = () => option"
+    const colour = typeof option === 'function'? option : () => option; 
+
     boxes.forEach(box => {
         box.addEventListener('mouseover', (event) =>{
-            event.target.style.backgroundColor = 'blue';
+            event.target.style.backgroundColor = colour();
         })
     });    
 }
 
-const displayBoxNumber = (sides) =>{
-    let boxNumber = document.querySelector('#box-number');    
-    boxNumber.textContent = sides;
-}
-
-button.addEventListener('click', () => {
+changeBox.addEventListener('click', () => {
     sides = Number(window.prompt('No. of boxes per side to'));
 
     // To prevent lag on user's computer
@@ -51,6 +62,25 @@ button.addEventListener('click', () => {
     }
 
 })
+
+
+
+const rainbowButton = document.querySelector('#rainbow-colour')
+rainbowButton.addEventListener('click', () => {
+  enableColouring(getRandomColor);
+})
+
+
+const defaltColourButton = document.querySelector('#default-colour');
+defaltColourButton.addEventListener('click', () => {
+  enableColouring();
+})
+
+
+const displayBoxNumber = (sides) =>{
+  let boxNumber = document.querySelector('#box-number');    
+  boxNumber.textContent = sides;
+}
 
 
 
