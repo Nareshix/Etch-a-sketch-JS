@@ -29,6 +29,11 @@ const enableColouring = () => {
     });    
 }
 
+const displayBoxNumber = (sides) =>{
+    let boxNumber = document.querySelector('#box-number');    
+    boxNumber.textContent = sides;
+}
+
 button.addEventListener('click', () => {
     sides = Number(window.prompt('No. of boxes per side to'));
 
@@ -39,10 +44,14 @@ button.addEventListener('click', () => {
     else{
         document.querySelectorAll('.box').forEach( box => box.remove());
         createGrid(sides);
+        displayBoxNumber(sides);
         enableColouring();
+
     }
 
 })
+
+
 
 //Default behaviour
 createGrid();
