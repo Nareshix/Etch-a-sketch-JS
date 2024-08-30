@@ -20,11 +20,13 @@ const enableColouring = () => {
     });    
 }
 
-button.addEventListener('click', () => {    // console.log(Number(window.prompt()));
+button.addEventListener('click', () => {
     sides = Number(window.prompt());
+    document.querySelectorAll('.box').forEach( box => box.remove());
     createGrid(sides);
     enableColouring()
 })
 
+//Default behaviour
 createGrid();
 enableColouring();
